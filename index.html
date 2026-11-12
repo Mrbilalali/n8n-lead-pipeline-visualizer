@@ -17,40 +17,45 @@
     <meta name="twitter:title" content="n8n Lead Pipeline Visualizer" />
     <meta name="twitter:description" content="Watch a fictional lead flow through an AI lead pipeline — enrichment, AI scoring, CRM routing, follow-up — in 42 seconds. Try the interactive simulation." />
     <meta name="twitter:image" content="https://n8n-lead-pipeline-visualizer-mr-bilal-alis-projects.vercel.app/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
       :root {
-        --bg: #eef4ef;
-        --surface: #f9fcf9;
-        --surface-2: #e4eee7;
-        --ink: #10261f;
-        --muted: #557068;
-        --line: #bfd0c5;
-        --accent: #0d6b4d;
-        --accent-2: #17956c;
-        --accent-soft: #d5eadf;
-        --warm: #c56732;
-        --warm-soft: #f3dfd2;
-        --shadow: 0 18px 55px rgba(26, 69, 53, .12);
-        --focus: #0d6b4d;
+        --bg: #fcfcff;
+        --surface: #ffffff;
+        --surface-2: #f4f5fe;
+        --ink: #10101e;
+        --muted: #4c4c60;
+        --line: #dddff2;
+        --accent: #2b2bd0;
+        --accent-2: #3233ef;
+        --accent-soft: #eef0fe;
+        --warm: #e8590c;
+        --warm-soft: #fdeee3;
+        --cta: #e8590c;
+        --cta-hover: #d9480f;
+        --success: #1f9d66;
+        --shadow: 0 18px 55px rgba(16, 16, 30, .1);
+        --focus: #3233ef;
       }
 
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #0d1915;
-          --surface: #14231e;
-          --surface-2: #1a2f27;
-          --ink: #eef9f2;
-          --muted: #abc3b8;
-          --line: #365348;
-          --accent: #65d6a7;
-          --accent-2: #44bd8b;
-          --accent-soft: #1c4938;
-          --warm: #eea176;
-          --warm-soft: #553322;
+          --bg: #0a0a16;
+          --surface: #12121f;
+          --surface-2: #1b1b31;
+          --ink: #f4f4fa;
+          --muted: #a7a7c4;
+          --line: #2d2d4d;
+          --accent: #a5a5fb;
+          --accent-2: #8383f7;
+          --accent-soft: #23234d;
+          --warm: #ff8a4d;
+          --warm-soft: #46260f;
           --shadow: 0 18px 60px rgba(0, 0, 0, .28);
-          --focus: #8ae8bd;
+          --focus: #8383f7;
         }
       }
 
@@ -62,9 +67,11 @@
         min-height: 100vh;
         background: var(--bg);
         color: var(--ink);
-        font-family: "DM Sans", sans-serif;
+        font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+
+      h1, h2, h3 { font-family: "Sora", "Inter", sans-serif; }
 
       button, a { font: inherit; }
       button:focus-visible, a:focus-visible {
@@ -94,7 +101,7 @@
         background: color-mix(in srgb, var(--surface) 92%, transparent);
         border: 1px solid var(--line);
         border-radius: 999px;
-        box-shadow: 0 8px 25px rgba(26, 69, 53, .08);
+        box-shadow: 0 8px 25px rgba(16, 16, 30, .07);
         backdrop-filter: blur(10px);
         font-family: "IBM Plex Mono", monospace;
         font-size: 11px;
@@ -270,11 +277,11 @@
       .primary-button {
         width: 100%;
         color: #fff;
-        background: var(--accent);
-        box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 24%, transparent);
+        background: var(--cta);
+        box-shadow: 0 8px 20px color-mix(in srgb, var(--cta) 24%, transparent);
       }
-      @media (prefers-color-scheme: dark) { .primary-button { color: #082118; } }
-      .primary-button:hover, .book-button:hover { transform: translateY(-2px); }
+      @media (prefers-color-scheme: dark) { .primary-button { color: #fff; } }
+      .primary-button:hover, .book-button:hover { transform: translateY(-2px); background: var(--cta-hover); }
       .primary-button:disabled { opacity: .62; cursor: wait; transform: none; }
       .primary-button svg, .book-button svg, .secondary-button svg { width: 18px; height: 18px; }
 
@@ -332,7 +339,7 @@
         border-radius: 22px 22px 22px 8px;
         color: var(--muted);
         background: var(--surface);
-        box-shadow: 0 8px 20px rgba(26, 69, 53, .06);
+        box-shadow: 0 8px 20px rgba(16, 16, 30, .06);
         transition: color .25s ease, border-color .25s ease, background .25s ease, transform .25s ease, box-shadow .25s ease;
       }
       .node svg { width: 29px; height: 29px; }
@@ -368,7 +375,7 @@
         width: 21px;
         height: 21px;
         color: var(--surface);
-        background: var(--accent-2);
+        background: var(--success);
         border-radius: 50%;
         opacity: 0;
         transform: scale(.6);
@@ -459,7 +466,7 @@
         background: var(--accent);
         color: #fff;
       }
-      @media (prefers-color-scheme: dark) { .result { color: #082118; } }
+      @media (prefers-color-scheme: dark) { .result { color: #10101e; } }
       .result.visible { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr); gap: 40px; align-items: center; }
       .result-tag { margin: 0 0 12px; font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; opacity: .8; }
       .result h2 { margin: 0 0 14px; font-size: clamp(30px, 5vw, 52px); line-height: 1.02; letter-spacing: -.045em; }
@@ -472,8 +479,8 @@
       .cta-box { padding: 24px; color: var(--ink); background: var(--surface); border-radius: 6px 22px 22px 22px; }
       .cta-box h3 { margin: 0 0 8px; font-size: 22px; letter-spacing: -.02em; }
       .cta-box p { margin-bottom: 18px; color: var(--muted); font-size: 14px; }
-      .book-button { width: 100%; color: #fff; background: var(--accent); }
-      @media (prefers-color-scheme: dark) { .book-button { color: #082118; } }
+      .book-button { width: 100%; color: #fff; background: var(--cta); }
+      @media (prefers-color-scheme: dark) { .book-button { color: #fff; } }
       .secondary-button { width: 100%; margin-top: 10px; color: var(--accent); background: transparent; border: 1px solid var(--line); }
       .secondary-button:hover { background: var(--accent-soft); }
 
